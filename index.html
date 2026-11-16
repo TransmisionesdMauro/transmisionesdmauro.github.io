@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Transmisiones D-Mauro · Voz y pasión para tu partido</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,600;0,800;1,800;1,900&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --menta:#88ccb3; --verde:#2f8f6f; --osc:#0b1914; --osc2:#11251e; --card:#152d25; --linea:#24473b;
+    --texto:#eaf5f0; --suave:#a9cbbd; --amarillo:#f5d547;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth;overflow-x:hidden}
+  body{overflow-x:hidden}
+  body{margin:0;font-family:Barlow,system-ui,sans-serif;background:var(--osc);color:var(--texto);line-height:1.5}
+  a{color:inherit}
+  .cond{font-family:"Barlow Condensed",sans-serif}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 20px}
+
+  /* barra */
+  nav{position:sticky;top:0;z-index:20;background:rgba(11,25,20,.82);backdrop-filter:blur(10px);border-bottom:1px solid rgba(136,204,179,.15)}
+  nav .wrap{display:flex;align-items:center;justify-content:space-between;height:62px}
+  .marca{display:flex;align-items:center;gap:10px;text-decoration:none}
+  .marca img{width:38px;height:38px;border-radius:10px}
+  .marca b{font-family:"Barlow Condensed";font-weight:800;font-style:italic;font-size:21px;letter-spacing:.3px}
+  .btn{display:inline-flex;align-items:center;gap:8px;text-decoration:none;font-family:"Barlow Condensed";font-weight:800;
+    letter-spacing:.6px;text-transform:uppercase;border-radius:999px;transition:transform .15s, box-shadow .15s}
+  .btn:hover{transform:translateY(-2px)}
+  .btn-sm{font-size:15px;padding:9px 16px;background:var(--menta);color:var(--osc)}
+  .btn-lg{font-size:21px;padding:15px 28px}
+  .btn-main{background:var(--menta);color:var(--osc);box-shadow:0 10px 30px rgba(136,204,179,.35)}
+  .btn-ghost{border:2px solid rgba(255,255,255,.7);color:#fff}
+
+  /* hero */
+  .hero{position:relative;min-height:88vh;display:flex;align-items:center;overflow:hidden;isolation:isolate}
+  .hero .bg{position:absolute;inset:0;background:url(hero.jpg) center/cover no-repeat;z-index:-2;transform:scale(1.05);filter:saturate(1.1)}
+  .hero::before{content:"";position:absolute;inset:0;z-index:-1;
+    background:linear-gradient(100deg, rgba(11,25,20,.96) 0%, rgba(11,25,20,.82) 42%, rgba(47,143,111,.35) 100%),
+               linear-gradient(0deg, var(--osc) 0%, transparent 30%)}
+  .hero .wrap{padding-top:40px;padding-bottom:70px}
+  .vivo{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);
+    padding:6px 14px;border-radius:999px;font-weight:600;font-size:14px;letter-spacing:.5px}
+  .vivo i{width:9px;height:9px;border-radius:50%;background:#ff3b3b;box-shadow:0 0 0 0 rgba(255,59,59,.7);animation:pulso 1.6s infinite}
+  @keyframes pulso{70%{box-shadow:0 0 0 10px rgba(255,59,59,0)}100%{box-shadow:0 0 0 0 rgba(255,59,59,0)}}
+  .hero h1{font-family:"Barlow Condensed";font-weight:900;font-style:italic;text-transform:uppercase;
+    font-size:clamp(52px,9vw,112px);line-height:.88;margin:18px 0 18px;letter-spacing:-.5px}
+  .hero h1 span{color:var(--menta)}
+  .hero p.lead{font-size:clamp(17px,2.2vw,21px);max-width:540px;color:#d6ebe2;margin:0 0 30px}
+  .ctas{display:flex;flex-wrap:wrap;gap:14px}
+  .datos{display:flex;flex-wrap:wrap;gap:28px;margin-top:44px}
+  .datos div b{display:block;font-family:"Barlow Condensed";font-weight:800;font-size:34px;color:var(--menta);line-height:1}
+  .datos div span{font-size:14px;color:var(--suave)}
+
+  /* franja */
+  .franja{background:var(--menta);color:var(--osc);overflow:hidden;white-space:nowrap;padding:12px 0;transform:rotate(-1.2deg);margin:-14px -10px 0}
+  .franja div{display:inline-block;animation:correr 28s linear infinite;font-family:"Barlow Condensed";font-weight:900;font-style:italic;
+    font-size:24px;text-transform:uppercase;letter-spacing:1px}
+  .franja span{margin:0 22px}
+  @keyframes correr{to{transform:translateX(-50%)}}
+
+  section{padding:86px 0}
+  .kicker{font-family:"Barlow Condensed";font-weight:800;letter-spacing:2.5px;color:var(--menta);text-transform:uppercase;font-size:15px}
+  h2{font-family:"Barlow Condensed";font-weight:900;font-style:italic;text-transform:uppercase;font-size:clamp(38px,5.5vw,60px);line-height:.95;margin:8px 0 14px}
+  .intro{color:var(--suave);max-width:600px;font-size:18px;margin:0 0 38px}
+
+  /* servicios */
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:16px}
+  .serv{background:linear-gradient(160deg,var(--card),var(--osc2));border:1px solid var(--linea);border-radius:22px;padding:26px 22px;position:relative;overflow:hidden}
+  .serv::after{content:"";position:absolute;right:-40px;top:-40px;width:120px;height:120px;border-radius:50%;background:radial-gradient(rgba(136,204,179,.18),transparent 70%)}
+  .ico{width:54px;height:54px;border-radius:15px;background:rgba(136,204,179,.14);display:grid;place-items:center;margin-bottom:16px}
+  .ico svg{width:28px;height:28px;stroke:var(--menta);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+  .serv h3{font-family:"Barlow Condensed";font-weight:800;font-size:25px;margin:0 0 6px;text-transform:uppercase}
+  .serv p{margin:0;color:var(--suave);font-size:15.5px}
+
+  /* deportes */
+  .deportes{display:flex;flex-wrap:wrap;gap:12px;margin-top:6px}
+  .dep{display:flex;align-items:center;gap:10px;padding:12px 20px;border-radius:999px;background:var(--card);border:1px solid var(--linea);
+    font-family:"Barlow Condensed";font-weight:800;font-size:21px;text-transform:uppercase}
+  .dep em{font-style:normal;font-size:24px}
+
+  /* foto + pasos */
+  .duo{display:grid;grid-template-columns:1.05fr 1fr;gap:44px;align-items:center}
+  .foto{position:relative;border-radius:26px;overflow:hidden;aspect-ratio:4/3;box-shadow:0 30px 60px rgba(0,0,0,.45)}
+  .foto img{width:100%;height:100%;object-fit:cover;display:block}
+  .foto .tag{position:absolute;left:16px;bottom:16px;background:rgba(11,25,20,.85);border:1px solid var(--linea);border-radius:14px;padding:10px 14px;display:flex;align-items:center;gap:10px}
+  .foto .tag img{width:34px;height:34px;border-radius:8px}
+  .foto .tag b{font-family:"Barlow Condensed";font-size:18px;display:block;line-height:1}
+  .foto .tag span{font-size:12.5px;color:var(--suave)}
+  .pasos{list-style:none;padding:0;margin:0;display:grid;gap:14px}
+  .pasos li{display:flex;gap:16px;align-items:flex-start;background:var(--card);border:1px solid var(--linea);border-radius:18px;padding:18px}
+  .num{flex:none;width:44px;height:44px;border-radius:12px;background:var(--menta);color:var(--osc);display:grid;place-items:center;
+    font-family:"Barlow Condensed";font-weight:900;font-size:24px}
+  .pasos b{font-family:"Barlow Condensed";font-size:22px;text-transform:uppercase;display:block;line-height:1.1}
+  .pasos span{color:var(--suave);font-size:15px}
+
+  /* cta final */
+  .cierre{background:radial-gradient(circle at 20% 20%,rgba(136,204,179,.25),transparent 55%),linear-gradient(135deg,var(--verde),#1b5e48);
+    border-radius:30px;padding:56px 32px;text-align:center;position:relative;overflow:hidden}
+  .cierre h2{margin-top:0}
+  .cierre p{max-width:520px;margin:0 auto 28px;color:#e3f4ec;font-size:18px}
+  .cierre .btn-main{background:#fff;box-shadow:0 12px 30px rgba(0,0,0,.25)}
+  .cierre .ctas{justify-content:center}
+
+  /* redes */
+  .redes{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px}
+  .red{display:flex;align-items:center;gap:14px;padding:16px 18px;border-radius:18px;background:var(--card);border:1px solid var(--linea);text-decoration:none;transition:border-color .2s, transform .15s}
+  .red:hover{border-color:var(--menta);transform:translateY(-2px)}
+  .red .c{width:46px;height:46px;border-radius:13px;display:grid;place-items:center;font-family:"Barlow Condensed";font-weight:900;font-size:17px;color:#fff}
+  .red b{font-family:"Barlow Condensed";font-size:21px;display:block;line-height:1.05}
+  .red span{font-size:13.5px;color:var(--suave)}
+
+  footer{border-top:1px solid var(--linea);padding:34px 0 44px;color:var(--suave);font-size:14px}
+  footer .wrap{display:flex;flex-wrap:wrap;gap:16px;justify-content:space-between;align-items:center}
+  footer .marca b{color:var(--texto)}
+
+  @media (max-width:760px){
+    .duo{grid-template-columns:1fr}
+    .hero{min-height:auto}
+    .hero .wrap{padding-top:54px}
+    section{padding:64px 0}
+    nav .btn-sm{display:none}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a class="marca" href="#inicio"><img src="logo.jpg" alt="Logo TDM"><b>TRANSMISIONES D-MAURO</b></a>
+    <a class="btn btn-sm" href="https://docs.google.com/forms/d/e/1FAIpQLSec_yAySZO9WshYHUvnoicQw3yiqc9O09oUjLQW4cNtyVU9vg/viewform">Agenda tu relato</a>
+  </div>
+</nav>
+
+<header class="hero" id="inicio">
+  <div class="bg" role="img" aria-label="Partido de fútbol amateur en cancha de tierra"></div>
+  <div class="wrap">
+    <span class="vivo"><i></i> Relatos en vivo · V Región</span>
+    <h1>Voz y pasión<br>para <span>tu partido</span></h1>
+    <p class="lead">Tu partido transmitido en vivo por YouTube, con relato, marcador en pantalla y los goles listos para tus redes.</p>
+    <div class="ctas">
+      <a class="btn btn-lg btn-main" href="https://docs.google.com/forms/d/e/1FAIpQLSec_yAySZO9WshYHUvnoicQw3yiqc9O09oUjLQW4cNtyVU9vg/viewform">🎙️ Agenda tu relato</a>
+      <a class="btn btn-lg btn-ghost" href="https://www.youtube.com/@Transmisionesdmauro">▶ Ver transmisiones</a>
+    </div>
+    <div class="datos">
+      <div><b>EN VIVO</b><span>por YouTube</span></div>
+      <div><b>REELS</b><span>con los goles</span></div>
+      <div><b>QUILPUÉ</b><span>Villa Alemana y V Región</span></div>
+    </div>
+  </div>
+</header>
+
+<div class="franja" aria-hidden="true"><div>
+  <span>⚽ Fútbol</span><span>🏀 Básquetbol</span><span>🏐 Vóleibol</span><span>🥅 Futsal</span><span>🎙️ Voz y pasión</span><span>📺 En vivo</span>
+  <span>⚽ Fútbol</span><span>🏀 Básquetbol</span><span>🏐 Vóleibol</span><span>🥅 Futsal</span><span>🎙️ Voz y pasión</span><span>📺 En vivo</span>
+</div></div>
+
+<section id="que-hacemos">
+  <div class="wrap">
+    <div class="kicker">Qué hacemos</div>
+    <h2>Tu partido, como en la tele</h2>
+    <p class="intro">El fútbol amateur también merece un relato con emoción. Llegamos a tu cancha y la familia, los amigos y la hinchada lo ven en vivo desde donde estén.</p>
+    <div class="grid">
+      <div class="serv">
+        <div class="ico"><svg viewBox="0 0 24 24"><rect x="2" y="5" width="15" height="14" rx="2"/><path d="m17 10 5-3v10l-5-3"/></svg></div>
+        <h3>Transmisión en vivo</h3><p>Tu partido completo en vivo por YouTube, y queda grabado para verlo cuando quieras.</p>
+      </div>
+      <div class="serv">
+        <div class="ico"><svg viewBox="0 0 24 24"><rect x="9" y="2" width="6" height="12" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v4M8 22h8"/></svg></div>
+        <h3>Relato con emoción</h3><p>Cada jugada narrada con voz y pasión, con los nombres de tu equipo y el grito de gol.</p>
+      </div>
+      <div class="serv">
+        <div class="ico"><svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="12" rx="2"/><path d="M7 20h10M9 9h1M14 9h1M12 8v2"/></svg></div>
+        <h3>Marcador en pantalla</h3><p>Resultado y minuto de juego siempre a la vista, como en una transmisión profesional.</p>
+      </div>
+      <div class="serv">
+        <div class="ico"><svg viewBox="0 0 24 24"><rect x="6" y="2" width="12" height="20" rx="2.5"/><path d="m10.5 9 4 3-4 3z"/></svg></div>
+        <h3>Reels de los goles</h3><p>Resumen vertical con los goles, listo para Instagram, Facebook y TikTok.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="deportes" style="padding-top:0">
+  <div class="wrap">
+    <div class="kicker">Deportes</div>
+    <h2>Fútbol y mucho más</h2>
+    <div class="deportes">
+      <div class="dep"><em>⚽</em>Fútbol</div>
+      <div class="dep"><em>🥅</em>Futsal</div>
+      <div class="dep"><em>🏀</em>Básquetbol</div>
+      <div class="dep"><em>🏐</em>Vóleibol</div>
+      <div class="dep"><em>🏆</em>Torneos y finales</div>
+    </div>
+  </div>
+</section>
+
+<section id="como-funciona" style="background:var(--osc2)">
+  <div class="wrap duo">
+    <div class="foto">
+      <img src="cancha.jpg" alt="Transmisión en vivo de un partido en Quilpué">
+      <div class="tag"><img src="logo.jpg" alt=""><div><b>EN VIVO DESDE TU CANCHA</b><span>Quilpué · Villa Alemana</span></div></div>
+    </div>
+    <div>
+      <div class="kicker">Cómo funciona</div>
+      <h2>Agenda en 3 pasos</h2>
+      <ol class="pasos">
+        <li><div class="num">1</div><div><b>Llena el formulario</b><span>Nos cuentas el club, la fecha, la hora, la cancha y cuántos partidos son.</span></div></li>
+        <li><div class="num">2</div><div><b>Te escribimos por WhatsApp</b><span>Confirmamos la disponibilidad y el valor.</span></div></li>
+        <li><div class="num">3</div><div><b>¡A relatar!</b><span>Llegamos a la cancha, transmitimos en vivo y después te mandamos los reels.</span></div></li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<section id="agenda">
+  <div class="wrap">
+    <div class="cierre">
+      <div class="kicker" style="color:#d9f3e8">¿Juegas este fin de semana?</div>
+      <h2>Dale voz a tu partido</h2>
+      <p>Cuéntanos de tu partido y te respondemos lo antes posible. Revisa también nuestras tarifas.</p>
+      <div class="ctas">
+        <a class="btn btn-lg btn-main" href="https://docs.google.com/forms/d/e/1FAIpQLSec_yAySZO9WshYHUvnoicQw3yiqc9O09oUjLQW4cNtyVU9vg/viewform">📝 Solicitar relato</a>
+        <a class="btn btn-lg btn-ghost" href="https://claude.ai/artifact/BeWhQsQCJreowDsprTzJXy">💰 Ver tarifas</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="redes" style="padding-top:10px">
+  <div class="wrap">
+    <div class="kicker">Síguenos</div>
+    <h2>Goles, reels y en vivo</h2>
+    <div class="redes">
+      <a class="red" href="https://www.instagram.com/transmisiones.d.mauro/"><div class="c" style="background:linear-gradient(135deg,#f9a03f,#d6246e,#7a3ac4)">IG</div><div><b>Instagram</b><span>@transmisiones.d.mauro</span></div></a>
+      <a class="red" href="https://www.youtube.com/@Transmisionesdmauro"><div class="c" style="background:#e62117">YT</div><div><b>YouTube</b><span>Partidos en vivo</span></div></a>
+      <a class="red" href="https://www.tiktok.com/@transmisiones.dma"><div class="c" style="background:#111;border:1px solid #333">TT</div><div><b>TikTok</b><span>@transmisiones.dma</span></div></a>
+      <a class="red" href="https://www.facebook.com/363371973531092"><div class="c" style="background:#1f6feb">FB</div><div><b>Facebook</b><span>Transmisiones D-Mauro</span></div></a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <a class="marca" href="#inicio"><img src="logo.jpg" alt=""><b>TRANSMISIONES D-MAURO</b></a>
+    <span>🎙️ Relatos de fútbol amateur y otros deportes · Quilpué, Villa Alemana y V Región</span>
+  </div>
+</footer>
+
+</body>
+</html>
