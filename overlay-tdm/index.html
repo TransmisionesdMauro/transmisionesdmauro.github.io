@@ -190,6 +190,8 @@
 <script>
 /* Anual = 25% menos que 12 meses */
 const PRECIOS = {relator: {clp: 9990, usd: 12, clpA: 89900, usdA: 108}, asociacion: {clp: 49990, usd: 59, clpA: 449900, usdA: 529}, extra: {clp: 19990, usd: 24, clpA: 179900, usdA: 216}};
+/* Suscripciones de Mercado Pago (solo CLP). Sin link → WhatsApp. */
+const PAGO = {relator: {mes: "https://mpago.la/2HaH1KR", anio: "https://mpago.la/28gNpMg"}, asociacion: {mes: "https://mpago.la/2ULBUME", anio: ""}};
 const li = a => a.map(x => "<li>" + x + "</li>").join("");
 const T = {
 es: {
@@ -219,7 +221,7 @@ es: {
   pAsoL: li(["1 competencia o liga, con todas sus categorías",
  "Código oficial único para sus relatores", "Fixture y solicitudes de transmisión oficial", "Un relator oficial por partido", "Resultados confirmados ✓ e inamovibles", "Tabla y goleadores automáticos",
  "Llaves de eliminación directa (ida y vuelta o partido único)", "Links para ayudantes en cada cancha", "Goles de todas las canchas en cada transmisión", "Sus partidos en la página pública en vivo"]),
-  notaPrecio: "Plan anual: pagas una vez al año y ahorras 25%. En Chile se cobra en pesos; fuera de Chile, en dólares, y pueden sumarse impuestos o comisiones de tu banco. Cancelas cuando quieras.",
+  pagar: "💳 Pagar con Mercado Pago", notaPrecio: "Pagas con Mercado Pago y se renueva solo; después de pagar, escríbenos por WhatsApp con tu correo para activar tu cuenta. Plan anual: pagas una vez al año y ahorras 25%. En Chile se cobra en pesos; fuera de Chile, en dólares, y pueden sumarse impuestos o comisiones de tu banco. Cancelas cuando quieras.",
   incT: "¿Qué recibes al contratar?",
   incL: li(["<b>Nada que descargar.</b> Todo funciona en el navegador.", "<b>Relator:</b> el link de tu control (para manejar todo desde el teléfono o tablet) y el link de tu overlay (lo pegas una vez como capa web en Live Now u OBS).", "Desde el control generas los links para delegados, árbitros y tu público.", "<b>Asociación:</b> su código único, el link de su panel (fixture, solicitudes, confirmar resultados) y los links para los ayudantes de cada cancha."]),
   h2d: "Preguntas",
@@ -259,7 +261,7 @@ en: {
   pAsoL: li(["1 competition or league, with all its categories",
  "Unique official code for its commentators", "Fixtures and official broadcast requests", "One official commentator per match", "Confirmed ✓ results that can't be changed", "Automatic table and top scorers",
  "Knockout brackets (two legs or single match)", "Links for helpers at each pitch", "Goals from every pitch in every stream", "Its matches on the public live page"]),
-  notaPrecio: "Yearly plan: pay once a year and save 25%. Outside Chile we charge in US dollars; local taxes or bank fees may apply. Cancel anytime.",
+  pagar: "💳 Pay with Mercado Pago", notaPrecio: "Yearly plan: pay once a year and save 25%. Outside Chile we charge in US dollars; local taxes or bank fees may apply. Cancel anytime.",
   incT: "What do you get?",
   incL: li(["<b>Nothing to download.</b> Everything runs in the browser.", "<b>Commentator:</b> your control-panel link (to run everything from a phone or tablet) and your overlay link (paste it once as a web layer in Live Now or OBS).", "From the control panel you create links for team delegates, referees and your audience.", "<b>Association:</b> its unique code, its panel link (fixtures, requests, result confirmation) and links for helpers at each pitch."]),
   h2d: "FAQ",
@@ -299,7 +301,7 @@ pt: {
   pAsoL: li(["1 competição ou liga, com todas as categorias",
  "Código oficial único para seus narradores", "Tabela de jogos e pedidos de transmissão oficial", "Um narrador oficial por jogo", "Resultados confirmados ✓ e definitivos", "Classificação e artilharia automáticas",
  "Chaves de mata-mata (ida e volta ou jogo único)", "Links para ajudantes em cada campo", "Gols de todos os campos em cada transmissão", "Seus jogos na página pública ao vivo"]),
-  notaPrecio: "Plano anual: pague uma vez por ano e economize 25%. Fora do Chile cobramos em dólares; podem incidir impostos ou tarifas do seu banco. Cancele quando quiser.",
+  pagar: "💳 Pagar com Mercado Pago", notaPrecio: "Plano anual: pague uma vez por ano e economize 25%. Fora do Chile cobramos em dólares; podem incidir impostos ou tarifas do seu banco. Cancele quando quiser.",
   incT: "O que você recebe?",
   incL: li(["<b>Nada para baixar.</b> Tudo funciona no navegador.", "<b>Narrador:</b> o link do seu painel (para controlar tudo pelo celular ou tablet) e o link do seu overlay (cole uma vez como camada web no Live Now ou OBS).", "Pelo painel você gera links para delegados, árbitros e seu público.", "<b>Associação:</b> seu código único, o link do seu painel (jogos, pedidos, confirmação de resultados) e links para os ajudantes de cada campo."]),
   h2d: "Perguntas",
@@ -323,7 +325,9 @@ function pintar(){
       ? fmt(pa, M) + " <small>" + t.anio + "</small><span class=\"otra\">" + t.equiv.replace("{p}", fmt(red(pa / 12, M), M)).replace("{a}", fmt(p * 12 - pa, M)) + "</span>"
       : fmt(p, M) + " <small>" + t.mes + "</small><span class=\"otra\">" + t.anual.replace("{p}", fmt(pa, M)) + "</span>"; });
   document.querySelectorAll("[data-extra]").forEach(e => { const x = PRECIOS.extra; e.textContent = t.extra.replace("{p}", P === "anio" ? fmt(x[M + "A"], M) + " " + t.anio : fmt(x[M], M) + " " + t.mes); });
-  document.querySelectorAll("[data-wa]").forEach(e => e.href = "https://wa.me/56950011943?text=" + encodeURIComponent(t.wa[e.dataset.wa] + (P === "anio" && e.dataset.wa !== "info" ? " (" + t.bAnio.split(" ·")[0] + ")" : "") + (M === "usd" ? " (USD)" : "")));
+  document.querySelectorAll("[data-wa]").forEach(e => { const pg = M === "clp" && PAGO[e.dataset.wa] && PAGO[e.dataset.wa][P];
+    if(pg){ e.href = pg; e.textContent = t.pagar; return; } if(e.dataset.wa !== "info" && e.dataset.i) e.textContent = t.contratar;
+    e.href = "https://wa.me/56950011943?text=" + encodeURIComponent(t.wa[e.dataset.wa] + (P === "anio" && e.dataset.wa !== "info" ? " (" + t.bAnio.split(" ·")[0] + ")" : "") + (M === "usd" ? " (USD)" : "")); });
   document.querySelectorAll("[data-ter]").forEach(e => e.href = "https://transmisiones-d-mauro-ae302.web.app/terminos/?lang=" + (L === "es" ? "es" : "en"));
   document.querySelectorAll("[data-l]").forEach(b => b.setAttribute("aria-pressed", b.dataset.l === L));
   document.querySelectorAll("[data-m]").forEach(b => b.setAttribute("aria-pressed", b.dataset.m === M));
