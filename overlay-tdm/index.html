@@ -8,6 +8,9 @@
 <meta property="og:title" content="Overlay TDM · Tu transmisión, como en la tele">
 <meta property="og:description" content="Marcador, formaciones con fotos, tarjetas, VAR TDM, tu logo y tus colores. Prueba gratis 7 días.">
 <meta property="og:image" content="https://transmisionesdmauro.github.io/overlay-tdm/deportivo.jpg">
+<link rel="alternate" hreflang="es" href="https://transmisionesdmauro.github.io/overlay-tdm/?lang=es">
+<link rel="alternate" hreflang="en" href="https://transmisionesdmauro.github.io/overlay-tdm/?lang=en">
+<link rel="alternate" hreflang="pt" href="https://transmisionesdmauro.github.io/overlay-tdm/?lang=pt">
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,600;0,800;1,800;1,900&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
   :root{
@@ -71,101 +74,258 @@
   a:focus-visible{outline:3px solid var(--amarillo);outline-offset:3px}
   @media (max-width:520px){ .btn-lg{width:100%} nav .btn-sm{display:none} }
   @media (prefers-reduced-motion:reduce){ html{scroll-behavior:auto} .btn{transition:none} }
+
+  .selectores{display:flex;gap:8px;align-items:center}
+  .seg{display:flex;background:var(--card);border:1px solid var(--linea);border-radius:999px;padding:3px}
+  .seg button{font:inherit;font-weight:600;font-size:13px;background:none;border:0;color:var(--suave);padding:5px 10px;border-radius:999px;cursor:pointer}
+  .seg button[aria-pressed="true"]{background:var(--menta);color:var(--osc)}
+  .plan .precio .otra{display:block;font-size:15px;color:var(--suave);font-weight:600;margin-top:6px}
+  .gratis{color:var(--amarillo)!important}
+  @media (max-width:430px){ .marca b{display:none} }
+  .incluye{margin-top:30px;background:var(--card);border:1px solid var(--linea);border-radius:18px;padding:20px}
+  .incluye h3{margin-bottom:10px}
+  .incluye ol{margin:0;padding-left:20px;color:var(--suave);display:flex;flex-direction:column;gap:6px}
 </style>
 </head>
 <body>
 <nav>
   <div class="wrap">
     <a class="marca" href="../"><img src="../logo.jpg" alt="Logo TDM"><b>OVERLAY TDM</b></a>
-    <a class="btn btn-sm" href="https://transmisiones-d-mauro-ae302.web.app/overlay/prueba.html">Prueba gratis 7 días</a>
+    <div class="selectores">
+      <div class="seg" role="group" aria-label="Idioma / Language"><button type="button" data-l="es">ES</button><button type="button" data-l="en">EN</button><button type="button" data-l="pt">PT</button></div>
+      <div class="seg" role="group" aria-label="Moneda / Currency"><button type="button" data-m="clp">CLP</button><button type="button" data-m="usd">USD</button></div>
+    </div>
   </div>
 </nav>
 
 <header class="hero">
   <div class="wrap">
-    <p class="kicker">Para relatores, ligas y asociaciones</p>
-    <h1>Tu transmisión,<br><span>como en la tele</span></h1>
-    <p class="lead">El overlay para transmitir fútbol amateur desde el teléfono. Marcador con reloj, formaciones con fotos, tarjetas, cambios y VAR TDM, con tu logo y tus colores. Hecho por un relator, para relatores.</p>
+    <p class="kicker" data-i="kicker"></p>
+    <h1 data-i="h1"></h1>
+    <p class="lead" data-i="lead"></p>
     <div class="ctas">
-      <a class="btn btn-lg btn-main" href="https://transmisiones-d-mauro-ae302.web.app/overlay/prueba.html">🎙️ Prueba gratis 7 días</a>
-      <a class="btn btn-lg btn-wa" href="https://wa.me/56950011943?text=Hola%2C%20quiero%20saber%20m%C3%A1s%20del%20Overlay%20TDM" target="_blank" rel="noopener">💬 Escríbenos por WhatsApp</a>
+      <a class="btn btn-lg btn-main" href="https://transmisiones-d-mauro-ae302.web.app/overlay/prueba.html" data-i="ctaPrueba"></a>
+      <a class="btn btn-lg btn-wa" data-wa="info" target="_blank" rel="noopener" data-i="ctaWa"></a>
     </div>
-    <p class="mini">Sin tarjeta de crédito. Funciona con Live Now, OBS y cualquier app que acepte una capa web.</p>
-    <div class="shot"><img src="deportivo.jpg" alt="Overlay TDM en diseño Deportivo: marcador arriba y resumen del partido abajo, sobre una cancha de fútbol amateur" loading="eager"></div>
+    <p class="mini" data-i="mini"></p>
+    <div class="shot"><img src="deportivo.jpg" alt="Overlay TDM" loading="eager"></div>
   </div>
 </header>
 
 <section>
   <div class="wrap">
-    <p class="kicker">Todo desde una sola consola</p>
-    <h2>Lo que sale en pantalla</h2>
+    <p class="kicker" data-i="k2"></p>
+    <h2 data-i="h2a"></h2>
     <div class="grid">
-      <div class="card"><div class="ic">⏱️</div><h3>Marcador y reloj</h3><p>Dos toques para partir cada tiempo. Los minutos de goles, tarjetas y cambios se ponen solos.</p></div>
-      <div class="card"><div class="ic">📋</div><h3>Formaciones con fotos</h3><p>El delegado llena su equipo desde un link de WhatsApp. Tú solo la pones en pantalla.</p></div>
-      <div class="card"><div class="ic">🟨</div><h3>Tarjetas con foto</h3><p>Cada amarilla o roja sale con la foto del jugador. La doble amarilla se convierte en roja sola.</p></div>
-      <div class="card"><div class="ic">🖥️</div><h3>VAR TDM</h3><p>Los técnicos piden revisiones y el árbitro las ve sincronizadas con la transmisión. Con informe arbitral.</p></div>
-      <div class="card"><div class="ic">🏆</div><h3>Campeonato en vivo</h3><p>Goles de otras canchas, tabla y goleadores oficiales de la asociación, al instante.</p></div>
-      <div class="card"><div class="ic">⭐</div><h3>Jugador del partido</h3><p>Tu público vota desde su teléfono y el ganador sale en pantalla.</p></div>
-      <div class="card"><div class="ic">📣</div><h3>Auspiciadores</h3><p>Intro, cierre y barra de publicidad que rotan entre tus auspiciadores.</p></div>
-      <div class="card"><div class="ic">📱</div><h3>Página para tu público</h3><p>Marcador, goles, formaciones y terna en vivo, para compartir en tus historias.</p></div>
+      <div class="card"><div class="ic">⏱️</div><h3 data-i="f_reloj"></h3><p data-i="f_reloj_p"></p></div>
+      <div class="card"><div class="ic">📋</div><h3 data-i="f_form"></h3><p data-i="f_form_p"></p></div>
+      <div class="card"><div class="ic">🟨</div><h3 data-i="f_tarj"></h3><p data-i="f_tarj_p"></p></div>
+      <div class="card"><div class="ic">🖥️</div><h3 data-i="f_var"></h3><p data-i="f_var_p"></p></div>
+      <div class="card"><div class="ic">🏆</div><h3 data-i="f_camp"></h3><p data-i="f_camp_p"></p></div>
+      <div class="card"><div class="ic">⭐</div><h3 data-i="f_mvp"></h3><p data-i="f_mvp_p"></p></div>
+      <div class="card"><div class="ic">📣</div><h3 data-i="f_ausp"></h3><p data-i="f_ausp_p"></p></div>
+      <div class="card"><div class="ic">📱</div><h3 data-i="f_pub"></h3><p data-i="f_pub_p"></p></div>
     </div>
   </div>
 </section>
 
 <section style="background:var(--osc2)">
   <div class="wrap">
-    <p class="kicker">Tu marca</p>
-    <h2>3 diseños, tus colores, tu logo</h2>
+    <p class="kicker" data-i="k3"></p>
+    <h2 data-i="h2b"></h2>
     <div class="disenos">
-      <div class="diseno"><img src="vidrio.png" alt="Diseño Vidrio: tarjeta amarilla con la foto del jugador sobre fondo transparente" loading="lazy"><div><b>Vidrio</b><span>Transparente y elegante, deja ver el partido.</span></div></div>
-      <div class="diseno"><img src="solido.jpg" alt="Diseño Sólido en rojo: marcador y resumen con bloques de color" loading="lazy"><div><b>Sólido</b><span>Bloques firmes, máxima lectura en pantallas chicas.</span></div></div>
-      <div class="diseno"><img src="deportivo.jpg" alt="Diseño Deportivo en azul y amarillo: formas en ángulo" loading="lazy"><div><b>Deportivo</b><span>Ángulos y degradados, estilo canal de deportes.</span></div></div>
+      <div class="diseno"><img src="vidrio.png" alt="" loading="lazy"><div><b data-i="d1"></b><span data-i="d1p"></span></div></div>
+      <div class="diseno"><img src="solido.jpg" alt="" loading="lazy"><div><b data-i="d2"></b><span data-i="d2p"></span></div></div>
+      <div class="diseno"><img src="deportivo.jpg" alt="" loading="lazy"><div><b data-i="d3"></b><span data-i="d3p"></span></div></div>
     </div>
   </div>
 </section>
 
 <section id="planes">
   <div class="wrap">
-    <p class="kicker">Planes</p>
-    <h2>Elige el tuyo</h2>
+    <p class="kicker" data-i="k4"></p>
+    <h2 data-i="h2c"></h2>
     <div class="planes">
-      <div class="plan"><span class="tag">Empieza aquí</span><h3>Prueba gratis</h3><div class="precio">$0 <small>7 días</small></div>
-        <ul><li>Todo el overlay</li><li>Tu logo y tus colores</li><li>Sin tarjeta de crédito</li></ul>
-        <a class="btn btn-main" style="padding:12px" href="https://transmisiones-d-mauro-ae302.web.app/overlay/prueba.html">Probar gratis</a></div>
-      <div class="plan top"><h3>Relator</h3><div class="precio">$9.990 <small>/ mes</small></div>
-        <ul><li>Partidos ilimitados</li><li>Formaciones, tarjetas, cambios y VAR TDM</li><li>Conexión con tu asociación</li></ul>
-        <a class="btn btn-main" style="padding:12px" href="https://wa.me/56950011943?text=Hola%2C%20quiero%20el%20plan%20Relator%20de%20Overlay%20TDM" target="_blank" rel="noopener">Lo quiero</a></div>
-      <div class="plan"><h3>Liga o club</h3><div class="precio">$39.990 <small>/ mes</small></div>
-        <ul><li>Varios relatores y administradores</li><li>Auspiciadores de la liga</li><li>Página para el público</li></ul>
-        <a class="btn btn-main" style="padding:12px" href="https://wa.me/56950011943?text=Hola%2C%20quiero%20el%20plan%20Liga%20de%20Overlay%20TDM" target="_blank" rel="noopener">Lo quiero</a></div>
-      <div class="plan"><h3>Asociación</h3><div class="precio">$49.990 <small>/ mes</small></div>
-        <ul><li>Código oficial para sus relatores</li><li>Resultados confirmados e inamovibles</li><li>Tabla y goleadores automáticos</li></ul>
-        <a class="btn btn-main" style="padding:12px" href="https://wa.me/56950011943?text=Hola%2C%20quiero%20el%20plan%20Asociaci%C3%B3n%20de%20Overlay%20TDM" target="_blank" rel="noopener">Lo quiero</a></div>
+      <div class="plan"><span class="tag" data-i="tagEsp"></span><h3 data-i="pEsp"></h3><div class="precio gratis" data-i="gratis"></div>
+        <ul data-i="pEspL"></ul>
+        <a class="btn btn-main" style="padding:12px" href="https://transmisiones-d-mauro-ae302.web.app/en-vivo/" data-i="pEspB"></a></div>
+      <div class="plan top"><span class="tag" data-i="tagRel"></span><h3 data-i="pRel"></h3><div class="precio" data-precio="relator"></div>
+        <ul data-i="pRelL"></ul>
+        <a class="btn btn-main" style="padding:12px" href="https://transmisiones-d-mauro-ae302.web.app/overlay/prueba.html" data-i="pRelB"></a>
+        <a class="btn btn-ghost" style="padding:10px" data-wa="relator" target="_blank" rel="noopener" data-i="contratar"></a></div>
+      <div class="plan"><h3 data-i="pAso"></h3><div class="precio" data-precio="asociacion"></div>
+        <ul data-i="pAsoL"></ul>
+        <a class="btn btn-main" style="padding:12px" data-wa="asociacion" target="_blank" rel="noopener" data-i="contratar"></a></div>
     </div>
-    <p class="mini">¿Transmites pocos partidos? Pregúntanos por el cobro por partido.</p>
+    <p class="mini" data-i="notaPrecio"></p>
+    <div class="incluye"><h3 data-i="incT"></h3><ol data-i="incL"></ol></div>
   </div>
 </section>
 
 <section class="faq" style="padding-top:0">
   <div class="wrap">
-    <h2>Preguntas</h2>
-    <details><summary>¿Qué necesito para usarlo?</summary><p>Un teléfono con tu app de transmisión (Live Now, OBS u otra que acepte una capa web) y otro teléfono o tablet para manejar el control. Todo funciona en el navegador, sin instalar nada.</p></details>
-    <details><summary>¿Puedo poner mi logo y mis colores?</summary><p>Sí. Subes tu logo, eliges uno de los 3 diseños y tus colores, y lo ves al tiro en la vista previa.</p></details>
-    <details><summary>¿Qué pasa cuando termina la prueba?</summary><p>Tu espacio se pausa: puedes mirar, pero no guardar cambios. Escríbenos y lo activamos con el plan que elijas.</p></details>
-    <details><summary>¿Cómo funciona con mi asociación?</summary><p>La asociación contrata su plan y recibe un código. Con él, cada relator oficial recibe los goles de otras canchas, la tabla y los goleadores oficiales, y envía su resultado para que la asociación lo confirme.</p></details>
+    <h2 data-i="h2d"></h2>
+    <details><summary data-i="q1"></summary><p data-i="a1"></p></details>
+    <details><summary data-i="q2"></summary><p data-i="a2"></p></details>
+    <details><summary data-i="q3"></summary><p data-i="a3"></p></details>
+    <details><summary data-i="q4"></summary><p data-i="a4"></p></details>
+    <details><summary data-i="q5"></summary><p data-i="a5"></p></details>
+    <details><summary data-i="q6"></summary><p data-i="a6"></p></details>
   </div>
 </section>
 
 <section class="final">
   <div class="wrap">
-    <h2>Dale voz y pasión a tu transmisión</h2>
+    <h2 data-i="h2e"></h2>
     <div class="ctas">
-      <a class="btn btn-lg btn-main" href="https://transmisiones-d-mauro-ae302.web.app/overlay/prueba.html">🎙️ Probar gratis 7 días</a>
-      <a class="btn btn-lg btn-wa" href="https://wa.me/56950011943?text=Hola%2C%20quiero%20saber%20m%C3%A1s%20del%20Overlay%20TDM" target="_blank" rel="noopener">💬 WhatsApp</a>
+      <a class="btn btn-lg btn-main" href="https://transmisiones-d-mauro-ae302.web.app/overlay/prueba.html" data-i="ctaPrueba"></a>
+      <a class="btn btn-lg btn-wa" data-wa="info" target="_blank" rel="noopener">💬 WhatsApp</a>
     </div>
   </div>
 </section>
 
-<footer>© Transmisiones D-Mauro · Quilpué, Chile · <a href="https://transmisiones-d-mauro-ae302.web.app/terminos/">Términos de uso</a> · <a href="../">Volver a la portada</a></footer>
+<footer>© Transmisiones D-Mauro · Quilpué, Chile · <a data-ter href="https://transmisiones-d-mauro-ae302.web.app/terminos/" data-i="terminos"></a> · <a href="../" data-i="volver"></a></footer>
+<script>
+const PRECIOS = {relator: {clp: 9990, usd: 12}, asociacion: {clp: 49990, usd: 59}};
+const li = a => a.map(x => "<li>" + x + "</li>").join("");
+const T = {
+es: {
+  kicker: "Para relatores y asociaciones", h1: "Tu transmisión,<br><span>como en la tele</span>",
+  lead: "El overlay para transmitir fútbol amateur desde el teléfono. Marcador con reloj, formaciones con fotos, tarjetas, cambios y VAR TDM, con tu logo y tus colores. Hecho por un relator, para relatores.",
+  ctaPrueba: "🎙️ Prueba gratis 7 días", ctaWa: "💬 Escríbenos por WhatsApp",
+  mini: "Sin tarjeta de crédito. No se descarga nada: funciona con links en Live Now, OBS y cualquier app que acepte una capa web.",
+  k2: "Todo desde una sola consola", h2a: "Lo que sale en pantalla",
+  f_reloj: "Marcador y reloj", f_reloj_p: "Dos toques para partir cada tiempo. Los minutos de goles, tarjetas y cambios se ponen solos.",
+  f_form: "Formaciones con fotos", f_form_p: "El delegado llena su equipo desde un link de WhatsApp. Tú solo la pones en pantalla.",
+  f_tarj: "Tarjetas con foto", f_tarj_p: "Cada amarilla o roja sale con la foto del jugador. La doble amarilla se convierte en roja sola.",
+  f_var: "VAR TDM", f_var_p: "Los técnicos piden revisiones y el árbitro las ve sincronizadas con la transmisión. Con informe arbitral.",
+  f_camp: "Campeonato en vivo", f_camp_p: "Goles de otras canchas, tabla y goleadores oficiales de la asociación, al instante.",
+  f_mvp: "Jugador del partido", f_mvp_p: "Tu público vota desde su teléfono y el ganador sale en pantalla.",
+  f_ausp: "Auspiciadores", f_ausp_p: "Intro, cierre y barra de publicidad que rotan entre tus auspiciadores.",
+  f_pub: "Página para tu público", f_pub_p: "Marcador, goles, formaciones y terna en vivo, para compartir en tus historias.",
+  k3: "Tu marca", h2b: "3 diseños, tus colores, tu logo",
+  d1: "Vidrio", d1p: "Transparente y elegante, deja ver el partido.", d2: "Sólido", d2p: "Bloques firmes, máxima lectura en pantallas chicas.", d3: "Deportivo", d3p: "Ángulos y degradados, estilo canal de deportes.",
+  k4: "Planes", h2c: "Elige el tuyo", mes: "/ mes", anual: "o {p} al año (2 meses gratis)",
+  tagEsp: "Para el público", pEsp: "Espectador", gratis: "Gratis",
+  pEspL: li(["Partidos en vivo de tu asociación, con buscador", "Marcador, goles y tarjetas al minuto", "Formaciones con fotos y terna arbitral", "Vota por el jugador del partido", "Link directo a la transmisión del relator", "Sin registrarte ni descargar nada"]),
+  pEspB: "Ver partidos en vivo",
+  tagRel: "7 días gratis", pRel: "Relator",
+  pRelL: li(["Partidos ilimitados", "Marcador, reloj, goles, tarjetas con foto y cambios", "Formaciones que llenan los delegados", "VAR TDM con terna arbitral e informe", "Tu logo, tus colores y 3 diseños", "Publicidad: 3 intros y 8 auspiciadores", "Listas guardadas: equipos con nómina, árbitros y partidos", "Votación del jugador del partido", "Conexión con tu asociación (si tiene plan)"]),
+  pRelB: "Probar gratis", contratar: "Contratar",
+  pAso: "Asociación",
+  pAsoL: li(["Código oficial único para sus relatores", "Fixture y solicitudes de transmisión oficial", "Un relator oficial por partido", "Resultados confirmados ✓ e inamovibles", "Tabla y goleadores automáticos", "Links para ayudantes en cada cancha", "Goles de todas las canchas en cada transmisión", "Sus partidos en la página pública en vivo"]),
+  notaPrecio: "Precios mensuales. En Chile se cobra en pesos; fuera de Chile, en dólares, y pueden sumarse impuestos o comisiones de tu banco. Cancelas cuando quieras.",
+  incT: "¿Qué recibes al contratar?",
+  incL: li(["<b>Nada que descargar.</b> Todo funciona en el navegador.", "<b>Relator:</b> el link de tu control (para manejar todo desde el teléfono o tablet) y el link de tu overlay (lo pegas una vez como capa web en Live Now u OBS).", "Desde el control generas los links para delegados, árbitros y tu público.", "<b>Asociación:</b> su código único, el link de su panel (fixture, solicitudes, confirmar resultados) y los links para los ayudantes de cada cancha."]),
+  h2d: "Preguntas",
+  q1: "¿Qué necesito para usarlo?", a1: "Un teléfono con tu app de transmisión (Live Now, OBS u otra que acepte una capa web) y otro teléfono o tablet para manejar el control. Todo funciona en el navegador, sin instalar nada.",
+  q2: "¿Puedo poner mi logo y mis colores?", a2: "Sí. Subes tu logo, eliges uno de los 3 diseños y tus colores, y lo ves al tiro en la vista previa.",
+  q3: "¿Qué pasa cuando termina la prueba?", a3: "Tu espacio se pausa: puedes mirar, pero no guardar cambios. Escríbenos y lo activamos con el plan que elijas.",
+  q4: "¿Cómo funciona con mi asociación?", a4: "La asociación contrata su plan y recibe un código. Con él, cada relator oficial recibe los goles de otras canchas, la tabla y los goleadores oficiales, y envía su resultado para que la asociación lo confirme.",
+  q5: "¿Puedo contratar desde otro país?", a5: "Sí. Cobramos en dólares (USD) a relatores y asociaciones fuera de Chile. Escríbenos por WhatsApp y te enviamos el link de pago.",
+  q6: "¿Qué pasa con las fotos y datos de los jugadores?", a6: "Cada jugador, técnico, árbitro y relator acepta con su propia casilla, y sus datos se usan solo para el overlay. Lo detallamos en los términos y la política de privacidad.",
+  h2e: "Dale voz y pasión a tu transmisión", terminos: "Términos y privacidad", volver: "Volver a la portada",
+  wa: {info: "Hola, quiero saber más del Overlay TDM", relator: "Hola, quiero contratar el plan Relator del Overlay TDM", asociacion: "Hola, quiero contratar el plan Asociación del Overlay TDM"}
+},
+en: {
+  kicker: "For commentators and associations", h1: "Your stream,<br><span>like on TV</span>",
+  lead: "The overlay to broadcast grassroots football from your phone. Scoreboard with clock, line-ups with photos, cards, substitutions and VAR TDM, with your logo and your colours. Made by a commentator, for commentators.",
+  ctaPrueba: "🎙️ 7-day free trial", ctaWa: "💬 Message us on WhatsApp",
+  mini: "No credit card. Nothing to download: it works with links in Live Now, OBS and any app that accepts a web layer.",
+  k2: "All from one console", h2a: "What shows on screen",
+  f_reloj: "Scoreboard & clock", f_reloj_p: "Two taps to start each half. Minutes for goals, cards and subs are filled in automatically.",
+  f_form: "Line-ups with photos", f_form_p: "The team delegate fills in the line-up from a WhatsApp link. You just put it on screen.",
+  f_tarj: "Cards with photo", f_tarj_p: "Every yellow or red card shows the player's photo. A second yellow turns red automatically.",
+  f_var: "VAR TDM", f_var_p: "Coaches request reviews and the referee sees them in sync with the stream. With a referee report.",
+  f_camp: "Live championship", f_camp_p: "Goals from other pitches, official table and top scorers from the association, instantly.",
+  f_mvp: "Player of the match", f_mvp_p: "Your audience votes from their phones and the winner appears on screen.",
+  f_ausp: "Sponsors", f_ausp_p: "Intro, outro and an ad bar that rotates between your sponsors.",
+  f_pub: "Page for your audience", f_pub_p: "Live score, goals, line-ups and referees, ready to share in your stories.",
+  k3: "Your brand", h2b: "3 designs, your colours, your logo",
+  d1: "Glass", d1p: "Transparent and elegant, keeps the match visible.", d2: "Solid", d2p: "Bold blocks, maximum readability on small screens.", d3: "Sport", d3p: "Angles and gradients, sports-channel style.",
+  k4: "Plans", h2c: "Choose yours", mes: "/ month", anual: "or {p} per year (2 months free)",
+  tagEsp: "For the audience", pEsp: "Viewer", gratis: "Free",
+  pEspL: li(["Live matches of your association, with search", "Score, goals and cards minute by minute", "Line-ups with photos and referees", "Vote for the player of the match", "Direct link to the commentator's stream", "No sign-up, nothing to download"]),
+  pEspB: "Watch live matches",
+  tagRel: "7 days free", pRel: "Commentator",
+  pRelL: li(["Unlimited matches", "Scoreboard, clock, goals, cards with photo and subs", "Line-ups filled in by team delegates", "VAR TDM with referee crew and report", "Your logo, your colours and 3 designs", "Ads: 3 intros and 8 sponsors", "Saved lists: teams with rosters, referees and matches", "Player-of-the-match voting", "Connection with your association (if subscribed)"]),
+  pRelB: "Try it free", contratar: "Subscribe",
+  pAso: "Association",
+  pAsoL: li(["Unique official code for its commentators", "Fixtures and official broadcast requests", "One official commentator per match", "Confirmed ✓ results that can't be changed", "Automatic table and top scorers", "Links for helpers at each pitch", "Goals from every pitch in every stream", "Its matches on the public live page"]),
+  notaPrecio: "Monthly prices. Outside Chile we charge in US dollars; local taxes or bank fees may apply. Cancel anytime.",
+  incT: "What do you get?",
+  incL: li(["<b>Nothing to download.</b> Everything runs in the browser.", "<b>Commentator:</b> your control-panel link (to run everything from a phone or tablet) and your overlay link (paste it once as a web layer in Live Now or OBS).", "From the control panel you create links for team delegates, referees and your audience.", "<b>Association:</b> its unique code, its panel link (fixtures, requests, result confirmation) and links for helpers at each pitch."]),
+  h2d: "FAQ",
+  q1: "What do I need?", a1: "A phone with your streaming app (Live Now, OBS or any app that accepts a web layer) and another phone or tablet for the control panel. Everything runs in the browser.",
+  q2: "Can I use my logo and colours?", a2: "Yes. Upload your logo, pick one of 3 designs and your colours, and see it instantly in the preview.",
+  q3: "What happens after the trial?", a3: "Your space is paused (read-only). Message us and we activate the plan you choose.",
+  q4: "How does it work with my association?", a4: "The association subscribes and gets a code. With it, each official commentator receives goals from other pitches, the official table and top scorers, and sends the result for the association to confirm.",
+  q5: "Can I subscribe from another country?", a5: "Yes. We charge commentators and associations outside Chile in US dollars. Message us on WhatsApp and we will send you the payment link.",
+  q6: "What about players' photos and data?", a6: "Every player, coach, referee and commentator accepts with their own checkbox, and their data is used only for the overlay. See our terms and privacy policy.",
+  h2e: "Give your stream voice and passion", terminos: "Terms & privacy", volver: "Back to home",
+  wa: {info: "Hi, I would like to know more about Overlay TDM", relator: "Hi, I would like to subscribe to the Overlay TDM Commentator plan", asociacion: "Hi, I would like to subscribe to the Overlay TDM Association plan"}
+},
+pt: {
+  kicker: "Para narradores e associações", h1: "Sua transmissão,<br><span>como na TV</span>",
+  lead: "O overlay para transmitir futebol amador pelo celular. Placar com cronômetro, escalações com fotos, cartões, substituições e VAR TDM, com seu logo e suas cores. Feito por um narrador, para narradores.",
+  ctaPrueba: "🎙️ Teste grátis por 7 dias", ctaWa: "💬 Fale conosco no WhatsApp",
+  mini: "Sem cartão de crédito. Nada para baixar: funciona com links no Live Now, OBS e qualquer app que aceite uma camada web.",
+  k2: "Tudo em um só painel", h2a: "O que aparece na tela",
+  f_reloj: "Placar e cronômetro", f_reloj_p: "Dois toques para iniciar cada tempo. Os minutos de gols, cartões e substituições entram sozinhos.",
+  f_form: "Escalações com fotos", f_form_p: "O delegado preenche o time por um link do WhatsApp. Você só coloca na tela.",
+  f_tarj: "Cartões com foto", f_tarj_p: "Cada amarelo ou vermelho aparece com a foto do jogador. O segundo amarelo vira vermelho sozinho.",
+  f_var: "VAR TDM", f_var_p: "Os técnicos pedem revisões e o árbitro as vê sincronizadas com a transmissão. Com súmula arbitral.",
+  f_camp: "Campeonato ao vivo", f_camp_p: "Gols de outros campos, tabela e artilheiros oficiais da associação, na hora.",
+  f_mvp: "Craque da partida", f_mvp_p: "Seu público vota pelo celular e o vencedor aparece na tela.",
+  f_ausp: "Patrocinadores", f_ausp_p: "Abertura, encerramento e barra de publicidade que alterna entre seus patrocinadores.",
+  f_pub: "Página para o seu público", f_pub_p: "Placar, gols, escalações e arbitragem ao vivo, para compartilhar nos stories.",
+  k3: "Sua marca", h2b: "3 designs, suas cores, seu logo",
+  d1: "Vidro", d1p: "Transparente e elegante, deixa ver o jogo.", d2: "Sólido", d2p: "Blocos firmes, máxima leitura em telas pequenas.", d3: "Esportivo", d3p: "Ângulos e degradês, estilo canal de esportes.",
+  k4: "Planos", h2c: "Escolha o seu", mes: "/ mês", anual: "ou {p} por ano (2 meses grátis)",
+  tagEsp: "Para o público", pEsp: "Espectador", gratis: "Grátis",
+  pEspL: li(["Jogos ao vivo da sua associação, com busca", "Placar, gols e cartões minuto a minuto", "Escalações com fotos e arbitragem", "Vote no craque da partida", "Link direto para a transmissão do narrador", "Sem cadastro e sem baixar nada"]),
+  pEspB: "Ver jogos ao vivo",
+  tagRel: "7 dias grátis", pRel: "Narrador",
+  pRelL: li(["Jogos ilimitados", "Placar, cronômetro, gols, cartões com foto e substituições", "Escalações preenchidas pelos delegados", "VAR TDM com arbitragem e súmula", "Seu logo, suas cores e 3 designs", "Publicidade: 3 aberturas e 8 patrocinadores", "Listas salvas: times com elenco, árbitros e jogos", "Votação do craque da partida", "Conexão com sua associação (se tiver plano)"]),
+  pRelB: "Testar grátis", contratar: "Contratar",
+  pAso: "Associação",
+  pAsoL: li(["Código oficial único para seus narradores", "Tabela de jogos e pedidos de transmissão oficial", "Um narrador oficial por jogo", "Resultados confirmados ✓ e definitivos", "Classificação e artilharia automáticas", "Links para ajudantes em cada campo", "Gols de todos os campos em cada transmissão", "Seus jogos na página pública ao vivo"]),
+  notaPrecio: "Preços mensais. Fora do Chile cobramos em dólares; podem incidir impostos ou tarifas do seu banco. Cancele quando quiser.",
+  incT: "O que você recebe?",
+  incL: li(["<b>Nada para baixar.</b> Tudo funciona no navegador.", "<b>Narrador:</b> o link do seu painel (para controlar tudo pelo celular ou tablet) e o link do seu overlay (cole uma vez como camada web no Live Now ou OBS).", "Pelo painel você gera links para delegados, árbitros e seu público.", "<b>Associação:</b> seu código único, o link do seu painel (jogos, pedidos, confirmação de resultados) e links para os ajudantes de cada campo."]),
+  h2d: "Perguntas",
+  q1: "Do que preciso?", a1: "Um celular com seu app de transmissão (Live Now, OBS ou outro que aceite camada web) e outro celular ou tablet para o painel. Tudo funciona no navegador.",
+  q2: "Posso usar meu logo e minhas cores?", a2: "Sim. Envie seu logo, escolha um dos 3 designs e suas cores, e veja na hora na prévia.",
+  q3: "O que acontece depois do teste?", a3: "Seu espaço é pausado (só leitura). Fale conosco e ativamos o plano que você escolher.",
+  q4: "Como funciona com minha associação?", a4: "A associação contrata o plano e recebe um código. Com ele, cada narrador oficial recebe gols de outros campos, a tabela e a artilharia oficiais, e envia o resultado para a associação confirmar.",
+  q5: "Posso contratar de outro país?", a5: "Sim. Cobramos em dólares (USD) de narradores e associações fora do Chile. Fale conosco no WhatsApp e enviamos o link de pagamento.",
+  q6: "E as fotos e dados dos jogadores?", a6: "Cada jogador, técnico, árbitro e narrador aceita com sua própria caixa de seleção, e os dados são usados só no overlay. Veja os termos e a política de privacidade.",
+  h2e: "Dê voz e paixão à sua transmissão", terminos: "Termos e privacidade", volver: "Voltar ao início",
+  wa: {info: "Olá, quero saber mais sobre o Overlay TDM", relator: "Olá, quero contratar o plano Narrador do Overlay TDM", asociacion: "Olá, quero contratar o plano Associação do Overlay TDM"}
+}};
+let L = "es", M = "clp";
+const fmt = (v, m) => m === "clp" ? "$" + v.toLocaleString("es-CL") : "US$" + v;
+function pintar(){
+  const t = T[L]; document.documentElement.lang = L;
+  document.querySelectorAll("[data-i]").forEach(e => { if(t[e.dataset.i] != null) e.innerHTML = t[e.dataset.i]; });
+  document.querySelectorAll("[data-precio]").forEach(e => { const p = PRECIOS[e.dataset.precio][M];
+    e.innerHTML = fmt(p, M) + " <small>" + t.mes + "</small><span class=\"otra\">" + t.anual.replace("{p}", fmt(p * 10, M)) + "</span>"; });
+  document.querySelectorAll("[data-wa]").forEach(e => e.href = "https://wa.me/56950011943?text=" + encodeURIComponent(t.wa[e.dataset.wa] + (M === "usd" ? " (USD)" : "")));
+  document.querySelectorAll("[data-ter]").forEach(e => e.href = "https://transmisiones-d-mauro-ae302.web.app/terminos/?lang=" + (L === "es" ? "es" : "en"));
+  document.querySelectorAll("[data-l]").forEach(b => b.setAttribute("aria-pressed", b.dataset.l === L));
+  document.querySelectorAll("[data-m]").forEach(b => b.setAttribute("aria-pressed", b.dataset.m === M));
+  try{ localStorage.setItem("tdm-idioma", L); localStorage.setItem("tdm-moneda", M); }catch(e){}
+}
+document.querySelectorAll("[data-l]").forEach(b => b.onclick = () => { L = b.dataset.l; pintar(); });
+document.querySelectorAll("[data-m]").forEach(b => b.onclick = () => { M = b.dataset.m; pintar(); });
+{ const q = new URLSearchParams(location.search); let l = q.get("lang"), m = q.get("cur");
+  try{ l = l || localStorage.getItem("tdm-idioma"); m = m || localStorage.getItem("tdm-moneda"); }catch(e){}
+  const nav = (navigator.language || "es").slice(0, 2).toLowerCase();
+  L = T[l] ? l : (T[nav] ? nav : "en");
+  let enChile = false; try{ enChile = /Santiago|Punta_Arenas|Easter/.test(Intl.DateTimeFormat().resolvedOptions().timeZone); }catch(e){}
+  M = m === "usd" || m === "clp" ? m : (enChile ? "clp" : "usd"); }
+pintar();
+
+</script>
 </body>
 </html>
