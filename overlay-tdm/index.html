@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Overlay TDM · Gráficas para transmitir fútbol amateur</title>
+<meta name="description" content="El overlay para transmitir fútbol amateur desde el teléfono: marcador con reloj, formaciones con fotos, tarjetas, cambios, VAR TDM, tu logo y tus colores. Prueba gratis 7 días.">
+<meta property="og:title" content="Overlay TDM · Tu transmisión, como en la tele">
+<meta property="og:description" content="Marcador, formaciones con fotos, tarjetas, VAR TDM, tu logo y tus colores. Prueba gratis 7 días.">
+<meta property="og:image" content="https://transmisionesdmauro.github.io/overlay-tdm/deportivo.jpg">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,600;0,800;1,800;1,900&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --menta:#88ccb3; --verde:#2f8f6f; --osc:#0b1914; --osc2:#11251e; --card:#152d25; --linea:#24473b;
+    --texto:#eaf5f0; --suave:#a9cbbd; --amarillo:#f5d547;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;font-family:Barlow,system-ui,sans-serif;background:var(--osc);color:var(--texto);line-height:1.5}
+  a{color:inherit}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 20px}
+  nav{position:sticky;top:0;z-index:20;background:rgba(11,25,20,.86);backdrop-filter:blur(10px);border-bottom:1px solid rgba(136,204,179,.15)}
+  nav .wrap{display:flex;align-items:center;justify-content:space-between;height:62px;gap:10px}
+  .marca{display:flex;align-items:center;gap:10px;text-decoration:none}
+  .marca img{width:38px;height:38px;border-radius:10px}
+  .marca b{font-family:"Barlow Condensed";font-weight:800;font-style:italic;font-size:21px;letter-spacing:.3px}
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;text-decoration:none;font-family:"Barlow Condensed";font-weight:800;
+    letter-spacing:.6px;text-transform:uppercase;border-radius:999px;transition:transform .15s, box-shadow .15s;text-align:center}
+  .btn:hover{transform:translateY(-2px)}
+  .btn-sm{font-size:15px;padding:9px 16px;background:var(--menta);color:var(--osc)}
+  .btn-lg{font-size:21px;padding:15px 28px}
+  .btn-main{background:var(--menta);color:var(--osc);box-shadow:0 10px 30px rgba(136,204,179,.35)}
+  .btn-wa{background:#25d366;color:#06281a}
+  .btn-ghost{border:2px solid rgba(255,255,255,.7);color:#fff}
+  .kicker{font-family:"Barlow Condensed";font-weight:800;letter-spacing:2.5px;color:var(--menta);text-transform:uppercase;font-size:15px;margin:0}
+  h1,h2,h3{font-family:"Barlow Condensed";font-weight:900;font-style:italic;text-transform:uppercase;line-height:.98;margin:0}
+  h1{font-size:clamp(40px,8vw,74px)} h1 span{color:var(--menta)}
+  h2{font-size:clamp(32px,5.5vw,50px)}
+  h3{font-size:24px}
+  section{padding:64px 0}
+  .hero{padding:56px 0 40px}
+  .hero p.lead{font-size:20px;color:var(--suave);max-width:640px;margin:16px 0 26px}
+  .ctas{display:flex;gap:12px;flex-wrap:wrap}
+  .mini{font-size:14px;color:var(--suave);margin-top:12px}
+  .shot{margin-top:34px;border-radius:18px;overflow:hidden;border:1px solid var(--linea);box-shadow:0 30px 80px rgba(0,0,0,.5)}
+  .shot img{display:block;width:100%;height:auto}
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;margin-top:28px}
+  .card{background:var(--card);border:1px solid var(--linea);border-radius:16px;padding:20px}
+  .card .ic{font-size:28px}
+  .card h3{margin:8px 0 6px}
+  .card p{margin:0;color:var(--suave)}
+  .disenos{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px;margin-top:28px}
+  .diseno{background:var(--card);border:1px solid var(--linea);border-radius:16px;overflow:hidden}
+  .diseno img{display:block;width:100%;aspect-ratio:16/10;object-fit:cover;object-position:bottom}
+  .diseno div{padding:14px 16px}
+  .diseno b{font-family:"Barlow Condensed";font-weight:800;font-size:22px;text-transform:uppercase;font-style:italic}
+  .diseno span{display:block;color:var(--suave);font-size:15px}
+  .planes{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:16px;margin-top:28px}
+  .plan{background:var(--card);border:1px solid var(--linea);border-radius:18px;padding:22px;display:flex;flex-direction:column;gap:10px}
+  .plan.top{border-color:var(--menta);box-shadow:0 0 0 2px rgba(136,204,179,.25)}
+  .plan .precio{font-family:"Barlow Condensed";font-weight:900;font-size:44px;line-height:1;color:var(--menta)}
+  .plan .precio small{font-size:18px;color:var(--suave);font-weight:600}
+  .plan ul{margin:0;padding-left:18px;color:var(--suave);display:flex;flex-direction:column;gap:4px;flex:1}
+  .tag{align-self:flex-start;background:var(--amarillo);color:#2b2100;font-family:"Barlow Condensed";font-weight:800;letter-spacing:1px;text-transform:uppercase;font-size:13px;border-radius:999px;padding:3px 10px}
+  .faq details{background:var(--card);border:1px solid var(--linea);border-radius:14px;padding:14px 18px;margin-top:10px}
+  .faq summary{cursor:pointer;font-weight:600;font-size:18px}
+  .faq p{color:var(--suave);margin:10px 0 0}
+  .final{background:var(--osc2);text-align:center}
+  .final .ctas{justify-content:center;margin-top:22px}
+  footer{padding:30px 0 40px;color:var(--suave);font-size:14px;text-align:center}
+  a:focus-visible{outline:3px solid var(--amarillo);outline-offset:3px}
+  @media (max-width:520px){ .btn-lg{width:100%} nav .btn-sm{display:none} }
+  @media (prefers-reduced-motion:reduce){ html{scroll-behavior:auto} .btn{transition:none} }
+</style>
+</head>
+<body>
+<nav>
+  <div class="wrap">
+    <a class="marca" href="../"><img src="../logo.jpg" alt="Logo TDM"><b>OVERLAY TDM</b></a>
+    <a class="btn btn-sm" href="https://transmisiones-d-mauro-ae302.web.app/overlay/prueba.html">Prueba gratis 7 días</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <p class="kicker">Para relatores, ligas y asociaciones</p>
+    <h1>Tu transmisión,<br><span>como en la tele</span></h1>
+    <p class="lead">El overlay para transmitir fútbol amateur desde el teléfono. Marcador con reloj, formaciones con fotos, tarjetas, cambios y VAR TDM, con tu logo y tus colores. Hecho por un relator, para relatores.</p>
+    <div class="ctas">
+      <a class="btn btn-lg btn-main" href="https://transmisiones-d-mauro-ae302.web.app/overlay/prueba.html">🎙️ Prueba gratis 7 días</a>
+      <a class="btn btn-lg btn-wa" href="https://wa.me/56950011943?text=Hola%2C%20quiero%20saber%20m%C3%A1s%20del%20Overlay%20TDM" target="_blank" rel="noopener">💬 Escríbenos por WhatsApp</a>
+    </div>
+    <p class="mini">Sin tarjeta de crédito. Funciona con Live Now, OBS y cualquier app que acepte una capa web.</p>
+    <div class="shot"><img src="deportivo.jpg" alt="Overlay TDM en diseño Deportivo: marcador arriba y resumen del partido abajo, sobre una cancha de fútbol amateur" loading="eager"></div>
+  </div>
+</header>
+
+<section>
+  <div class="wrap">
+    <p class="kicker">Todo desde una sola consola</p>
+    <h2>Lo que sale en pantalla</h2>
+    <div class="grid">
+      <div class="card"><div class="ic">⏱️</div><h3>Marcador y reloj</h3><p>Dos toques para partir cada tiempo. Los minutos de goles, tarjetas y cambios se ponen solos.</p></div>
+      <div class="card"><div class="ic">📋</div><h3>Formaciones con fotos</h3><p>El delegado llena su equipo desde un link de WhatsApp. Tú solo la pones en pantalla.</p></div>
+      <div class="card"><div class="ic">🟨</div><h3>Tarjetas con foto</h3><p>Cada amarilla o roja sale con la foto del jugador. La doble amarilla se convierte en roja sola.</p></div>
+      <div class="card"><div class="ic">🖥️</div><h3>VAR TDM</h3><p>Los técnicos piden revisiones y el árbitro las ve sincronizadas con la transmisión. Con informe arbitral.</p></div>
+      <div class="card"><div class="ic">🏆</div><h3>Campeonato en vivo</h3><p>Goles de otras canchas, tabla y goleadores oficiales de la asociación, al instante.</p></div>
+      <div class="card"><div class="ic">⭐</div><h3>Jugador del partido</h3><p>Tu público vota desde su teléfono y el ganador sale en pantalla.</p></div>
+      <div class="card"><div class="ic">📣</div><h3>Auspiciadores</h3><p>Intro, cierre y barra de publicidad que rotan entre tus auspiciadores.</p></div>
+      <div class="card"><div class="ic">📱</div><h3>Página para tu público</h3><p>Marcador, goles, formaciones y terna en vivo, para compartir en tus historias.</p></div>
+    </div>
+  </div>
+</section>
+
+<section style="background:var(--osc2)">
+  <div class="wrap">
+    <p class="kicker">Tu marca</p>
+    <h2>3 diseños, tus colores, tu logo</h2>
+    <div class="disenos">
+      <div class="diseno"><img src="vidrio.png" alt="Diseño Vidrio: tarjeta amarilla con la foto del jugador sobre fondo transparente" loading="lazy"><div><b>Vidrio</b><span>Transparente y elegante, deja ver el partido.</span></div></div>
+      <div class="diseno"><img src="solido.jpg" alt="Diseño Sólido en rojo: marcador y resumen con bloques de color" loading="lazy"><div><b>Sólido</b><span>Bloques firmes, máxima lectura en pantallas chicas.</span></div></div>
+      <div class="diseno"><img src="deportivo.jpg" alt="Diseño Deportivo en azul y amarillo: formas en ángulo" loading="lazy"><div><b>Deportivo</b><span>Ángulos y degradados, estilo canal de deportes.</span></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="planes">
+  <div class="wrap">
+    <p class="kicker">Planes</p>
+    <h2>Elige el tuyo</h2>
+    <div class="planes">
+      <div class="plan"><span class="tag">Empieza aquí</span><h3>Prueba gratis</h3><div class="precio">$0 <small>7 días</small></div>
+        <ul><li>Todo el overlay</li><li>Tu logo y tus colores</li><li>Sin tarjeta de crédito</li></ul>
+        <a class="btn btn-main" style="padding:12px" href="https://transmisiones-d-mauro-ae302.web.app/overlay/prueba.html">Probar gratis</a></div>
+      <div class="plan top"><h3>Relator</h3><div class="precio">$9.990 <small>/ mes</small></div>
+        <ul><li>Partidos ilimitados</li><li>Formaciones, tarjetas, cambios y VAR TDM</li><li>Conexión con tu asociación</li></ul>
+        <a class="btn btn-main" style="padding:12px" href="https://wa.me/56950011943?text=Hola%2C%20quiero%20el%20plan%20Relator%20de%20Overlay%20TDM" target="_blank" rel="noopener">Lo quiero</a></div>
+      <div class="plan"><h3>Liga o club</h3><div class="precio">$39.990 <small>/ mes</small></div>
+        <ul><li>Varios relatores y administradores</li><li>Auspiciadores de la liga</li><li>Página para el público</li></ul>
+        <a class="btn btn-main" style="padding:12px" href="https://wa.me/56950011943?text=Hola%2C%20quiero%20el%20plan%20Liga%20de%20Overlay%20TDM" target="_blank" rel="noopener">Lo quiero</a></div>
+      <div class="plan"><h3>Asociación</h3><div class="precio">$49.990 <small>/ mes</small></div>
+        <ul><li>Código oficial para sus relatores</li><li>Resultados confirmados e inamovibles</li><li>Tabla y goleadores automáticos</li></ul>
+        <a class="btn btn-main" style="padding:12px" href="https://wa.me/56950011943?text=Hola%2C%20quiero%20el%20plan%20Asociaci%C3%B3n%20de%20Overlay%20TDM" target="_blank" rel="noopener">Lo quiero</a></div>
+    </div>
+    <p class="mini">¿Transmites pocos partidos? Pregúntanos por el cobro por partido.</p>
+  </div>
+</section>
+
+<section class="faq" style="padding-top:0">
+  <div class="wrap">
+    <h2>Preguntas</h2>
+    <details><summary>¿Qué necesito para usarlo?</summary><p>Un teléfono con tu app de transmisión (Live Now, OBS u otra que acepte una capa web) y otro teléfono o tablet para manejar el control. Todo funciona en el navegador, sin instalar nada.</p></details>
+    <details><summary>¿Puedo poner mi logo y mis colores?</summary><p>Sí. Subes tu logo, eliges uno de los 3 diseños y tus colores, y lo ves al tiro en la vista previa.</p></details>
+    <details><summary>¿Qué pasa cuando termina la prueba?</summary><p>Tu espacio se pausa: puedes mirar, pero no guardar cambios. Escríbenos y lo activamos con el plan que elijas.</p></details>
+    <details><summary>¿Cómo funciona con mi asociación?</summary><p>La asociación contrata su plan y recibe un código. Con él, cada relator oficial recibe los goles de otras canchas, la tabla y los goleadores oficiales, y envía su resultado para que la asociación lo confirme.</p></details>
+  </div>
+</section>
+
+<section class="final">
+  <div class="wrap">
+    <h2>Dale voz y pasión a tu transmisión</h2>
+    <div class="ctas">
+      <a class="btn btn-lg btn-main" href="https://transmisiones-d-mauro-ae302.web.app/overlay/prueba.html">🎙️ Probar gratis 7 días</a>
+      <a class="btn btn-lg btn-wa" href="https://wa.me/56950011943?text=Hola%2C%20quiero%20saber%20m%C3%A1s%20del%20Overlay%20TDM" target="_blank" rel="noopener">💬 WhatsApp</a>
+    </div>
+  </div>
+</section>
+
+<footer>© Transmisiones D-Mauro · Quilpué, Chile · <a href="https://transmisiones-d-mauro-ae302.web.app/terminos/">Términos de uso</a> · <a href="../">Volver a la portada</a></footer>
+</body>
+</html>
